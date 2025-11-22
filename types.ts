@@ -3,6 +3,9 @@ export interface Donor {
   fullName: string;
   email: string;
   phone: string;
+  course: string;
+  semester: string;
+  teacher?: string; // Nome do professor responsável ou indicado
   quantity: number;
   date: string; // ISO string
 }
@@ -13,4 +16,4 @@ export interface DonationStats {
   averageItemsPerDonor: number;
 }
 
-export type ViewState = 'dashboard' | 'register';
+export type ViewState = 'dashboard' | 'register' | 'edit' | 'list';

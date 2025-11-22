@@ -9,14 +9,18 @@ export const generateThankYouMessage = async (donor: Donor): Promise<string> => 
   try {
     const model = 'gemini-2.5-flash';
     const prompt = `
-      Write a warm, professional, and empathetic thank you email for a clothing donation campaign.
+      Escreva um e-mail de agradecimento caloroso, profissional e empático para uma campanha de doação de alimentos não perecíveis (combate à fome).
       
-      Donor Name: ${donor.fullName}
-      Items Donated: ${donor.quantity} pieces of clothing
+      Nome do Doador: ${donor.fullName}
+      Informações do Estudante: ${donor.course || 'Estudante'}, ${donor.semester || ''}
+      Quantidade de Alimentos: ${donor.quantity} itens/unidades
       
-      The tone should be grateful and community-focused. Mention that their donation makes a real difference.
-      Keep it concise (under 100 words).
-      Format the output as a simple text body, no subject line needed.
+      O tom deve ser grato e focado na solidariedade e no impacto social. 
+      Reconheça a contribuição dele como estudante da universidade.
+      Mencione que o alimento doado ajudará famílias necessitadas.
+      Mantenha conciso (menos de 100 palavras).
+      Escreva em Português do Brasil.
+      Formate a saída apenas como o corpo do texto, sem linha de assunto.
     `;
 
     const response = await ai.models.generateContent({
@@ -24,9 +28,9 @@ export const generateThankYouMessage = async (donor: Donor): Promise<string> => 
       contents: prompt,
     });
 
-    return response.text || "Thank you for your generous donation!";
+    return response.text || "Obrigado pela sua doação generosa de alimentos!";
   } catch (error) {
     console.error("Error generating message:", error);
-    return "Thank you so much for your generous contribution to our clothing drive. Your support helps us make a difference!";
+    return "Muito obrigado pela sua contribuição generosa para nossa campanha de arrecadação de alimentos. Seu apoio nos ajuda a alimentar quem precisa!";
   }
 };
