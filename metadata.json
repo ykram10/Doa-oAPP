@@ -1,0 +1,5 @@
+{
+  "name": "DoaçãoAPP",
+  "description": "Um painel de controle completo para gerenciar campanhas de doação de roupas. Inclui cadastro de doadores, análises em tempo real e geração automática de mensagens de agradecimento com inteligência artificial..",
+  "requestFramePermissions": []
+}
